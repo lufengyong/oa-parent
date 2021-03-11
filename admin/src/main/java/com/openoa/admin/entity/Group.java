@@ -1,8 +1,12 @@
 package com.openoa.admin.entity;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.WhereJoinTable;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Setter
@@ -19,4 +23,9 @@ public class Group {
     private String name;
     @Column(name = "alias")
     private String alias;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "oauth_object_permission",joinColumns = @JoinColumn(name = "object_id"),inverseJoinColumns = @JoinColumn(name = "permission_id"))
+    @WhereJoinTable(clause = "object_type='GROUP'")
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Permission> authorities;
 }

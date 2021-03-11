@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.WhereJoinTable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -44,6 +45,7 @@ public class AuthUserDetails implements UserDetails {
     private boolean accountNonLocked;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "oauth_object_permission",joinColumns = @JoinColumn(name = "object_id"),inverseJoinColumns = @JoinColumn(name = "permission_id"))
+    @WhereJoinTable(clause = "object_type='USER'")
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Permission> authorities;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

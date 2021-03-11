@@ -3,8 +3,6 @@ package com.openoa.admin.filter;
 import com.openoa.admin.service.impl.AuthUserDetailServiceImpl;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -36,8 +34,6 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     String tokenHeader = "Authorization";
     @Autowired
     private AuthUserDetailServiceImpl userDetailsService;
-
-    private final Logger loger = LoggerFactory.getLogger(TokenAuthenticationFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
