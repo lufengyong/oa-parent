@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/oauth
+    username: postgres
+    password: lufy2314
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 10
+      max-lifetime: 3000
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1ms
+        max-active: 8
+  jpa:
+    hibernate:
+      ddl-auto: none
+  devtools:
+    restart:
+      enabled: true
+pagehelper:
+  helperDialect: postgresql
+jwt:
+  subject: TOKEN
+  secret: MmI5MzJkZjY3ZGJlYjQ2MTc5NzhhYjMyZTZlOWIxZGNhYTNlZTRkYWQ1NGZiNGFiNjc4M2QwZDZjMDlkMjhhYg==
+  expireSecond: 3600
+  rememberMeSecond: 3600
+logging:
+  level:
+    root: error
