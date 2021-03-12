@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47166a1d-17f2-47db-951f-6c3430ea8c18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthObjectPermission.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthObjectTypeEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/filter/TokenAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/filter/TokenAuthenticationFilter.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +74,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
