@@ -2,6 +2,7 @@ package com.openoa.admin.controller;
 
 import com.openoa.admin.entity.AuthUserDetails;
 import com.openoa.admin.service.impl.AuthUserDetailServiceImpl;
+import com.openoa.admin.ultil.R;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +14,16 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class AdminController {
     @Autowired
@@ -41,19 +41,19 @@ public class AdminController {
 
     @RequestMapping("/userInfo")
     @ResponseBody
-    AuthUserDetails userInfo() {
+    R userInfo() {
         AuthUserDetails userDetails = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUserName = authentication.getName();
             userDetails = (AuthUserDetails) authUserDetailService.loadUserByUsername(currentUserName);
         }
-        return userDetails;
+        return R.ok(userDetails);
     }
 
     @PostMapping("/login")
     @ResponseBody
-    String login(@Param(value = "username") String username, @Param(value = "password") String password) {
+    R login(@Param(value = "username") String username, @Param(value = "password") String password) {
         String tokenHead = "Bearer ";
         UserDetails user = authUserDetailService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), user.getAuthorities());
@@ -71,6 +71,6 @@ public class AdminController {
                 .compact();
         redisTemplate.opsForValue().set(token, user.getUsername());
 
-        return tokenHead + token;
+        return R.ok(tokenHead + token);
     }
 }
