@@ -12,8 +12,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Setter
@@ -59,7 +61,15 @@ public class AuthUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
+        List<Permission> allAuthorities = new ArrayList<>();
+        allAuthorities.addAll(this.authorities);
+        this.groups.forEach(group -> {
+            allAuthorities.addAll(group.getAuthorities());
+        });
+        this.roles.forEach(role -> {
+            allAuthorities.addAll(role.getAuthorities());
+        });
+        return allAuthorities.stream().distinct().collect(Collectors.toList());
     }
 
     @Override
