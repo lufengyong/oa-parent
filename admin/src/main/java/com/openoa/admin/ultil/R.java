@@ -1,7 +1,5 @@
 package com.openoa.admin.ultil;
 
-import com.fasterxml.jackson.databind.json.JsonMapper;
-
 public class R {
     public Integer code;
     public String message;
