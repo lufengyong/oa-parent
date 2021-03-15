@@ -3,6 +3,7 @@ package com.openoa.admin.controller;
 import com.openoa.admin.entity.AuthUserDetails;
 import com.openoa.admin.service.impl.AuthUserDetailServiceImpl;
 import com.openoa.admin.ultil.R;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,20 @@ public class AdminController {
             userDetails = (AuthUserDetails) authUserDetailService.loadUserByUsername(currentUserName);
         }
         return R.ok(userDetails);
+    }
+
+    @RequestMapping("/getUserOnlineList")
+    @ResponseBody
+    R getUserOnlineList() {
+        List<UserDetails> onlineUsers = new ArrayList<>();
+        redisTemplate.keys("*").forEach((token)->{
+            String userName = redisTemplate.opsForValue().get(token);
+            UserDetails user = authUserDetailService.loadUserByUsername(userName);
+            if (null != user){
+                onlineUsers.add(user);
+            }
+        });
+        return R.ok(onlineUsers);
     }
 
     @PostMapping("/login")
