@@ -18,8 +18,9 @@ spring:
         max-wait: -1ms
         max-active: 8
   jpa:
+    show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   devtools:
     restart:
       enabled: true

@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47166a1d-17f2-47db-951f-6c3430ea8c18" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthObjectPermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthObjectPermission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/impl/AuthUserDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/impl/AuthUserDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +47,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.OAadmin">
     <configuration name="OAadmin" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.openoa.admin.AdminApplication" />
       <module name="admin" />
@@ -51,6 +55,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AdminApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.openoa.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.openoa.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.openoa.admin.AdminApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AdminApplicationTests" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -79,21 +103,41 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1615645596493">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1615816068318">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615645596493" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1615645596493">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1615816068318" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1615821953110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615645596493" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1615645596493">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615821953110" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1615821953110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615645596493" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1615645596493">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615821953110" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1615821953110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615645596493" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615821953110" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1615821953110">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615821953110" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1615821953110">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615821953110" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1615821953110">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615821953110" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1615821953110">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615821953110" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1615821953110">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615821953110" />
   </component>
 </project>

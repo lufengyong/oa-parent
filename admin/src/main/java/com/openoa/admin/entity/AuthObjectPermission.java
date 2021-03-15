@@ -21,5 +21,5 @@ public class AuthObjectPermission {
     @Column(name = "object_type")
     private Integer objectType;
     @Column(name = "permission_id")
-    private String permissionId;
+    private Integer permissionId;
 }

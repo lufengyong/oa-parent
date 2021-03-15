@@ -23,7 +23,7 @@ public class Role {
     private String alias;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "oauth_object_permission",joinColumns = @JoinColumn(name = "object_id"),inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    @WhereJoinTable(clause = "object_type='ROLE'")
+    @WhereJoinTable(clause = "object_type=1")
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Permission> authorities;
 }
