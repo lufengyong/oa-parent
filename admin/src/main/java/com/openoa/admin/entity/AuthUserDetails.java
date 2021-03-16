@@ -46,8 +46,7 @@ public class AuthUserDetails implements UserDetails {
     @Column(name = "account_non_locked")
     private boolean accountNonLocked;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "oauth_object_permission", joinColumns = @JoinColumn(name = "object_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    @WhereJoinTable(clause = "object_type=0")
+    @JoinTable(name = "oauth_user_permission", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Permission> authorities;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -5,7 +5,6 @@ import com.openoa.admin.service.impl.AuthUserDetailServiceImpl;
 import com.openoa.admin.service.impl.JwtTokenServiceImpl;
 import com.openoa.admin.ultil.R;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,13 +17,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
-public class AdminController {
+public class AuthController {
     @Autowired
     private AuthUserDetailServiceImpl authUserDetailService;
     @Autowired
     private JwtTokenServiceImpl jwtTokenService;
 
-    @RequestMapping("/userInfo")
+    @RequestMapping("/getUserInfo")
     @ResponseBody
     R userInfo() {
         AuthUserDetails userDetails = null;
@@ -45,7 +44,7 @@ public class AdminController {
 
     @PostMapping("/login")
     @ResponseBody
-    R login(@Param(value = "username") String username, @Param(value = "password") String password) throws Exception {
+    R login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) throws Exception {
         UserDetails user = authUserDetailService.loadUserByUsername(username);
         if (null == user) {
             throw new Exception("用户不存在");

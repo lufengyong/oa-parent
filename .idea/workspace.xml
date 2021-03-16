@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47166a1d-17f2-47db-951f-6c3430ea8c18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/handler/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/JwtTokenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/impl/JwtTokenServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/GroupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/PermissionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/test/java/com/openoa/admin/AdminApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/test/java/com/openoa/admin/AdminApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthObjectPermission.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/repository/AuthObjectRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/impl/AuthUserDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/impl/AuthUserDetailServiceImpl.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,18 +51,6 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.OAadmin">
     <configuration name="OAadmin" type="Application" factoryName="Application">
@@ -119,22 +112,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1615816068318" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1615900167388">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615904928836">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615900167388" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1615900167388">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615904928836" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1615905257240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615900167388" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1615900167388">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615905257240" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1615905257240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615900167388" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1615900167388">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615905257240" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1615905257240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615900167388" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615905257240" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1615905257240">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615905257240" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1615821953110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

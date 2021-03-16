@@ -24,8 +24,7 @@ public class Group {
     @Column(name = "alias", nullable = false)
     private String alias;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "oauth_object_permission", joinColumns = @JoinColumn(name = "object_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    @WhereJoinTable(clause = "object_type=2")
+    @JoinTable(name = "oauth_group_permission", joinColumns = @JoinColumn(name = "object_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Permission> authorities;
 }

@@ -17,8 +17,7 @@ import java.util.Optional;
 @Component
 public class AuthUserDetailServiceImpl implements UserDetailsService {
     @Resource
-    private
-    AuthUserRepository authUserRepository;
+    private AuthUserRepository authUserRepository;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
