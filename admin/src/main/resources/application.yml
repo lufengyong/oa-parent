@@ -18,7 +18,7 @@ spring:
         max-wait: -1ms
         max-active: 8
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: update
   devtools:
@@ -28,6 +28,8 @@ pagehelper:
   helperDialect: postgresql
 jwt:
   subject: TOKEN
+  tokenHeader: Authorization
+  tokenHead: Bearer
   secret: MmI5MzJkZjY3ZGJlYjQ2MTc5NzhhYjMyZTZlOWIxZGNhYTNlZTRkYWQ1NGZiNGFiNjc4M2QwZDZjMDlkMjhhYg==
   expireSecond: 3600
   rememberMeSecond: 3600

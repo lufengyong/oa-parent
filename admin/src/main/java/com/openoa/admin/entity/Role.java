@@ -17,12 +17,12 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
-    @Column(name = "alias")
+    @Column(name = "alias", nullable = false)
     private String alias;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "oauth_object_permission",joinColumns = @JoinColumn(name = "object_id"),inverseJoinColumns = @JoinColumn(name = "permission_id"))
+    @JoinTable(name = "oauth_object_permission", joinColumns = @JoinColumn(name = "object_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
     @WhereJoinTable(clause = "object_type=1")
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Permission> authorities;

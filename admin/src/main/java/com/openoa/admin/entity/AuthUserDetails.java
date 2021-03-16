@@ -26,10 +26,10 @@ public class AuthUserDetails implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "username")
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
     @JsonIgnore
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "email")
     private String email;
@@ -46,16 +46,16 @@ public class AuthUserDetails implements UserDetails {
     @Column(name = "account_non_locked")
     private boolean accountNonLocked;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "oauth_object_permission",joinColumns = @JoinColumn(name = "object_id"),inverseJoinColumns = @JoinColumn(name = "permission_id"))
+    @JoinTable(name = "oauth_object_permission", joinColumns = @JoinColumn(name = "object_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
     @WhereJoinTable(clause = "object_type=0")
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Permission> authorities;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "oauth_user_group",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "group_id"))
+    @JoinTable(name = "oauth_user_group", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Group> groups;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "oauth_user_role",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "oauth_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Role> roles;
 
@@ -102,18 +102,15 @@ public class AuthUserDetails implements UserDetails {
         return this.enabled;
     }
 
-    public boolean hasGroup(String groupMame)
-    {
+    public boolean hasGroup(String groupMame) {
         return this.groups.stream().anyMatch(group -> group.getName() == groupMame);
     }
 
-    public boolean hasRole(String roleMame)
-    {
+    public boolean hasRole(String roleMame) {
         return this.roles.stream().anyMatch(role -> role.getName() == roleMame);
     }
 
-    public boolean hasPermission(String permissionFullMame)
-    {
+    public boolean hasPermission(String permissionFullMame) {
         return this.authorities.stream().anyMatch(permission -> permission.getAuthority() == permissionFullMame);
     }
 
