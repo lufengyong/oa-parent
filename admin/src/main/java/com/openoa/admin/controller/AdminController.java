@@ -2,43 +2,27 @@ package com.openoa.admin.controller;
 
 import com.openoa.admin.entity.AuthUserDetails;
 import com.openoa.admin.service.impl.AuthUserDetailServiceImpl;
+import com.openoa.admin.service.impl.JwtTokenServiceImpl;
 import com.openoa.admin.ultil.R;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/auth")
 public class AdminController {
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
-    @Autowired
     private AuthUserDetailServiceImpl authUserDetailService;
-    @Value("${jwt.subject}")
-    private String subject;
-    @Value("${jwt.secret}")
-    private String secret;
-    @Value("${jwt.expireSecond}")
-    private Integer expireSecond;
-    @Value("${jwt.rememberMeSecond}")
-    private Integer rememberMeSecond;
+    @Autowired
+    private JwtTokenServiceImpl jwtTokenService;
 
     @RequestMapping("/userInfo")
     @ResponseBody
@@ -52,40 +36,38 @@ public class AdminController {
         return R.ok(userDetails);
     }
 
-    @RequestMapping("/getUserOnlineList")
+    @RequestMapping("/getOnlineUsers")
     @ResponseBody
     R getUserOnlineList() {
-        List<UserDetails> onlineUsers = new ArrayList<>();
-        redisTemplate.keys("*").forEach((token)->{
-            String userName = redisTemplate.opsForValue().get(token);
-            UserDetails user = authUserDetailService.loadUserByUsername(userName);
-            if (null != user){
-                onlineUsers.add(user);
-            }
-        });
+        List<String> onlineUsers = jwtTokenService.getOnlineUsers();
         return R.ok(onlineUsers);
     }
 
     @PostMapping("/login")
     @ResponseBody
-    R login(@Param(value = "username") String username, @Param(value = "password") String password) {
-        String tokenHead = "Bearer ";
+    R login(@Param(value = "username") String username, @Param(value = "password") String password) throws Exception {
         UserDetails user = authUserDetailService.loadUserByUsername(username);
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), user.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        List<String> authorities = new ArrayList<>();
-        user.getAuthorities().forEach(grantedAuthority -> {
-            authorities.add(grantedAuthority.getAuthority());
-        });
-        String token = Jwts.builder().setSubject(subject)
-                .claim("username", user.getUsername())
-                .claim("authorities", String.join(",", authorities))
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + expireSecond * 1000))
-                .signWith(SignatureAlgorithm.HS256, secret)
-                .compact();
-        redisTemplate.opsForValue().set(token, user.getUsername());
+        if (null == user) {
+            throw new Exception("用户不存在");
+        }
+        if (!jwtTokenService.validatePassword(password, user)) {
+            throw new Exception("密码错误");
+        }
 
-        return R.ok(tokenHead + token);
+        String token = jwtTokenService.login(user);
+        return R.ok(token);
+    }
+
+    @GetMapping("/logout")
+    void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+        String tokenHeader = "Authorization";
+        String authHeader = httpServletRequest.getHeader(tokenHeader);
+        String tokenHead = "Bearer ";
+        if (null != authHeader && authHeader.startsWith(tokenHead)) {
+            String authToken = authHeader.substring(tokenHead.length());
+            jwtTokenService.deleteToken(authToken);
+            SecurityContextHolder.getContext().setAuthentication(null);
+        }
+        httpServletResponse.sendRedirect("/");
     }
 }

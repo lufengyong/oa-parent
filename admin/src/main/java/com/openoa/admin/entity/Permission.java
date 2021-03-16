@@ -9,17 +9,18 @@ import javax.persistence.*;
 @Setter
 @Getter(value = AccessLevel.PUBLIC)
 @Entity
-@Table(name = "oauth_permission")
+@Table(name = "oauth_permission", uniqueConstraints = {@UniqueConstraint(columnNames = {"scope", "authority"})})
 public class Permission implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "scope")
+    @Column(name = "scope", nullable = false)
     private String scope;
-    @Column(name = "authority")
+    @Column(name = "authority", nullable = false)
     private String authority;
-    @Column(name = "alias")
+    @Column(name = "alias", nullable = false)
     private String alias;
+
     @Override
     public String getAuthority() {
         return this.scope + "." + this.authority;
