@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.WhereJoinTable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -22,13 +21,12 @@ import java.util.stream.Collectors;
 @Getter(value = AccessLevel.PUBLIC)
 @Entity
 @Table(name = "oauth_user")
-public class AuthUserDetails implements UserDetails {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "username", unique = true, nullable = false)
     private String username;
-    @JsonIgnore
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "email")

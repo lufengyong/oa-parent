@@ -1,9 +1,11 @@
 package com.openoa.admin.entity;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.WhereJoinTable;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.openoa.admin.controller;
 
-import com.openoa.admin.entity.AuthUserDetails;
+import com.openoa.admin.entity.User;
 import com.openoa.admin.service.impl.AuthUserDetailServiceImpl;
 import com.openoa.admin.service.impl.JwtTokenServiceImpl;
 import com.openoa.admin.ultil.R;
@@ -26,13 +26,13 @@ public class AuthController {
     @RequestMapping("/getUserInfo")
     @ResponseBody
     R userInfo() {
-        AuthUserDetails userDetails = null;
+        User user = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUserName = authentication.getName();
-            userDetails = (AuthUserDetails) authUserDetailService.loadUserByUsername(currentUserName);
+            user = (User) authUserDetailService.loadUserByUsername(currentUserName);
         }
-        return R.ok(userDetails);
+        return R.ok(user);
     }
 
     @RequestMapping("/getOnlineUsers")

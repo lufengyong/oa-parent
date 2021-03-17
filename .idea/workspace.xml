@@ -2,19 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47166a1d-17f2-47db-951f-6c3430ea8c18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/GroupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/PermissionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/RoleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/vo/UserVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthObjectPermission.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/AdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/AdminApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/AuthUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Group.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/repository/AuthObjectRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/repository/AuthUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/repository/AuthUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/impl/AuthUserDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/openoa/admin/service/impl/AuthUserDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-parent.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-parent.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +56,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.OAadmin">
     <configuration name="OAadmin" type="Application" factoryName="Application">
